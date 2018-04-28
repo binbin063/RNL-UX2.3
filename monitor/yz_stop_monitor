@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -x
+## Stop the monitoring 
+
+pid=$(ps -ef | grep yz_mem | awk '{print $2;}' | tr '\n' ' ')
+kill -9 $pid
+
+pid=$(ps -ef | grep sar |  awk '{print $2;}' | tr '\n' ' ')
+kill -9 $pid
+
+## Tidy up the CPU monitor result
+
+host=`hostname`
+
+
+file=yz_cpu_$host.out
+
+if [ -f $file ]; then
+   grep "all" $file | awk '{print $4;}' > yz_cpu_$host.txt
+fi
+
+## Tidy up the RAM monitor result
+file=yz_mem_$host.out 
+
+if [ -f $file ]; then
+   cat $file | awk '{print $3;}' > yz_mem_$host.txt
+fi
+
+## Tidy up the I/O monitor result
+file=yz_io_$host.out 
+if [ -f $file ]; then
+   cat $file |  awk '{print $4;}' > yz_io_read_$host.txt
+   cat $file |  awk '{print $5;}' > yz_io_write_$host.txt
+fi

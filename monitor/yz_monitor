@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -x
+host=`hostname`
+
+rm -rf yz_*.out yz_*.txt 
+
+sar -P ALL 10 90000 >> yz_cpu_$host.out &
+sar -b 10 90000 >> yz_io_$host.out &
+
+./yz_mem

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+##set -x
+
+# hosts="10.48.129.38 10.48.129.39 10.48.129.42 10.48.129.43 10.48.129.44 10.48.129.45 10.48.129.52 10.48.129.53 10.48.129.54 10.48.129.55 10.48.129.56 10.48.129.57 10.48.129.58 10.48.129.59"
+hostnames="mx-razgate01 mx-razgate02 mx-mail01 mx-mail02 mx-ux01 mx-ux02 mx-queue01 mx-queue02 mx-mss01 mx-mss02 mx-search01 mx-search02 mx-directory01 mx-directory02"
+jmeter_hosts="10.48.129.62 10.48.129.63 10.48.129.64 10.48.129.65 10.48.129.66 10.48.129.67"
+
+#servers="$hostnames $jmeter_hosts"
+
+servers=$jmeter_hosts
+echo $servers
+do_sync()
+{
+for server in $servers
+do
+    echo "Sync time on $server"
+    ssh root@$server "ntpdate us.pool.ntp.org"
+    #ssh root@$server "rm -rf /etc/localtime; ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime; ntpdate us.pool.ntp.org"
+done
+}
+
+check_time()
+{
+for server in $servers
+do
+    #echo "$server" 
+    ssh root@$server "date"
+done
+}
+
+do_sync
+check_time

@@ -1,0 +1,21 @@
+#!/usr/bin/expect -f 
+# usage: expect expect_scp root@mx-razgate01:$src_file $dest_file $password
+
+set timeout 10  
+set src_file [lindex $argv 0]  
+set dest_file [lindex $argv 1]  
+set password [lindex $argv 2]  
+spawn scp -p $src_file $dest_file  
+ expect {  
+ "(yes/no)?"  
+   {  
+    send "yes\n"  
+    expect "*assword:" { send "$password\n"}  
+ }  
+ "*assword:"  
+{  
+ send "$password\n"  
+}  
+}  
+expect "100%"  
+expect eof 

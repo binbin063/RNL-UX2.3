@@ -1,0 +1,48 @@
+#!/bin/bash
+
+set -x
+
+# hosts="10.48.129.38 10.48.129.39 10.48.129.42 10.48.129.43 10.48.129.44 10.48.129.45 10.48.129.52 10.48.129.53 10.48.129.54 10.48.129.55 10.48.129.56 10.48.129.57 10.48.129.58 10.48.129.59"
+hostnames="mx-razgate01 mx-razgate02 mx-mail01 mx-mail02 mx-ux01 mx-ux02 mx-queue01 mx-queue02 mx-mss01 mx-mss02 mx-search01 mx-search02 mx-directory01 mx-directory02"
+
+action=$1
+
+loc=$2
+
+dir_monitor=/root/ux2.3-test-data/monitor
+
+if [ "$loc" = "" ]; then
+   location=`pwd`/tmp
+else 
+   location=$2
+fi
+
+
+
+if [ "$action" = "stop" ]; then
+   rm -rf $location     
+   mkdir -p $location
+   echo  "Results will be copied to $location"
+
+   for h in $hostnames
+   do
+       echo "Stopping monitoring on $h"
+       ssh -o BatchMode=yes root@$h "cd ${dir_monitor};./yz_stop_monitor"
+       scp -o BatchMode=yes root@$h:${dir_monitor}/yz*txt $location
+       #scp -o BatchMode=yes root@$h:${dir_monitor}/yz*out $location
+   done
+
+elif [ "$action" = "start" ]; then
+  for h in $hostnames
+  do
+     echo "Start monitoring on $h"
+     ssh -o BatchMode=yes root@$h "cd ${dir_monitor};./yz_monitor > output.txt </dev/null 2>&1 &"
+  done
+
+else
+  echo "ERROR!"
+  echo "Please run as below:"
+  echo "./monitor_yz < start |  stop >"
+fi
+
+

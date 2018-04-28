@@ -1,0 +1,5 @@
+#!/bin/bash
+
+host=`hostname`
+while  [ 1 ]; do  free -m | grep "Mem" >> yz_mem_$host.out; sleep 10; done &
+

@@ -1,0 +1,182 @@
+#!/bin/bash
+
+###set -x
+# hosts="10.48.129.42 10.48.129.43 10.48.129.44 10.48.129.52 10.48.129.53 10.48.129.54 10.48.129.55 10.48.129.58 10.48.129.59"
+hostnames="mx-mail01 mx-mail02 mx-ux01 mx-ux02 mx-queue01 mx-queue02 mx-mss01 mx-mss02 mx-directory01 mx-directory02 cqueue01 cqueue03"
+# 10.48.129.62 
+jmeter_hosts="10.48.129.63 10.48.129.64 10.48.129.65 10.48.129.66 10.48.129.67"
+
+IMAIL_USER=imail
+MX_PREFIX=/opt/imail
+
+JMETER_PREFIX=/root/apache-jmeter-3.3/bin
+
+services_stop_remoteJmeter()
+{
+    echo "Stop remote Jmeter services ..."
+    for host in $jmeter_hosts
+    do
+        process_id=$(ssh -o BatchMode=yes root@$host "ps -ef | grep jmeter" | awk '{print $2;}' |  tr '\n' ' ')
+        ssh -o BatchMode=yes root@$host "kill -9 $process_id"
+    done
+}
+
+services_start_remoteJmeter()
+{
+    echo "Start remote Jmeter services ... "
+    for host in $jmeter_hosts
+    do
+        ssh -o BatchMode=yes root@$host "sh ${JMETER_PREFIX}/jmeter-server > /dev/null &"
+    done
+}
+
+services_stop()
+{
+    echo "Stop Mx services ..."
+
+    for host in $hostnames
+    do
+        #ssh -o BatchMode=yes root@mx-mail01 "su - imail -c \"/opt/imail/bin/imservctrl killStart\""
+        ssh -o BatchMode=yes root@$host "su - $IMAIL_USER -c \"${MX_PREFIX}/bin/imservctrl kill\""
+    done
+	
+    services_stop_remoteJmeter
+}
+
+
+services_start()
+{
+    echo "Start Mx services ... "
+    for host in $hostnames
+    do
+        ssh -o BatchMode=yes root@$host "su - $IMAIL_USER -c \"${MX_PREFIX}/bin/imservctrl start\""
+    done
+
+    services_start_remoteJmeter
+}
+
+cleanup_RAM()
+{
+    echo "Clean up CACHE ..."
+    servers="$hostnames $jmeter_hosts 10.48.129.62"
+    for server in $servers
+    do
+        ssh -o BatchMode=yes root@$server "sync ; echo 1 > /proc/sys/vm/drop_caches"  
+        ssh -o BatchMode=yes root@$server "sync ; echo 2 > /proc/sys/vm/drop_caches"   
+        ssh -o BatchMode=yes root@$server "sync ; echo 3 > /proc/sys/vm/drop_caches"
+    done   
+}    
+
+delete_logs()
+{
+    echo "Delete all logs ..."
+    for host in $hostnames
+    do
+        ssh -o BatchMode=yes root@$host "rm -rf ${MX_PREFIX}/log/*"
+    done
+}
+
+failure()
+{
+    echo "ERROR: $1"
+    exit 1
+}
+
+check_services()
+{
+    echo "Check whether services are running ..."
+    for host in $hostnames
+    do
+        # ssh -o BatchMode=yes root@$host "imservping" > ${host}_check.txt
+        # grep "unreachable" ${host}_check.txt && failure "${host} not running"
+        ssh -o BatchMode=yes root@$host "su - $IMAIL_USER -c imservping" | grep "unreachable" && failure "${host} not running"
+    done
+
+    for host in $jmeter_hosts
+    do
+        ssh -o BatchMode=yes root@$host "ps -ef|grep jmeter" | grep "jmeter-server" > /dev/null || failure "${host} not running"
+    done
+
+    echo "All services are running."      
+}   
+
+
+entry()
+{
+    flag=true
+    while $flag
+    do
+        flag=false
+        option=""
+        echo ""
+	echo "**********************************************************"
+	echo "**********************************************************"
+	echo "** Tidy up the Mx environment                           **"
+        echo "**                                                      **"                   
+        echo "** Please the operations you would like to perform:     **" 
+        echo "** (1). Stop all services                               **"                              
+	echo "** (2). Start all services                              **"
+	echo "** (3). Delete logs                                     **" 
+        echo "** (4). Clean Caches                                    **"
+        echo "** (5). Restart all services without deleting logs      **"  
+        echo "** (6). Restart all services with logs deleted          **"
+        echo "** (7). Check all services are running                  **"
+        echo "** (8). Stop remote Jmeter services                     **"
+	echo "** (9). Restart remote Jmeter services                     **"
+        echo "** (10). Quit                                            **"
+	echo -en "** The operation is(*choose a number between 1-10):"
+	read option
+        echo "Your input option is: $option"	
+        if [ "$option" = "1" ]; then
+            services_stop
+            exit 0
+        elif [ "$option" = "2" ]; then
+	    services_start
+            echo "Wait for 30 sec to allow all services started completedly"
+            sleep 30
+            check_services
+            exit 0
+        elif [ "$option" = "3" ]; then
+            delete_logs
+            exit 0
+	elif [ "$option" = "4" ]; then
+            cleanup_RAM            
+            exit 0
+        elif [ "$option" = "5" ]; then
+            services_stop
+            sleep 5
+            cleanup_RAM
+            services_start
+            check_services
+            exit 0
+        elif [ "$option" = "6" ]; then
+            services_stop
+            sleep 5
+            delete_logs
+            cleanup_RAM
+            services_start
+            check_services
+            exit 0
+        elif [ "$option" = "7" ]; then
+            check_services
+            exit 0
+	elif [ "$option" = "8" ]; then
+            services_stop_remoteJmeter
+            exit 0
+	elif [ "$option" = "9" ]; then
+            services_start_remoteJmeter
+            exit 0
+        elif [ "$option" = "10" ]; then
+            exit 0
+        else
+            echo "Can't recognize your option, please try again."
+            flag=true
+        fi
+     done 
+}
+
+clear
+entry
+
+
+
