@@ -122,7 +122,7 @@ entry()
         echo "** (6). Restart all services with logs deleted          **"
         echo "** (7). Check all services are running                  **"
         echo "** (8). Stop remote Jmeter services                     **"
-	echo "** (9). Restart remote Jmeter services                     **"
+	echo "** (9). Start remote Jmeter services                     **"
         echo "** (10). Quit                                            **"
 	echo -en "** The operation is(*choose a number between 1-10):"
 	read option
