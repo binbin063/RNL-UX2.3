@@ -85,11 +85,6 @@
             <stringProp name="Argument.desc">request timeout</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="userIdTestStart" elementType="Argument">
-            <stringProp name="Argument.name">userIdTestStart</stringProp>
-            <stringProp name="Argument.value">18670</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
@@ -171,8 +166,6 @@
               <stringProp name="script">
 int x = Integer.parseInt(vars.get(&quot;userIdStart&quot;));
 int y = Integer.parseInt(vars.get(&quot;userIdEnd&quot;));
-//int x = 1;
-//int y = 100
 int userId = x + ((int)(Math.random()*(y - x)));
 
 //int x = Integer.parseInt(vars.get(&quot;userIdTestStart&quot;));
