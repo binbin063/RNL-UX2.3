@@ -163,21 +163,44 @@
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
               <boolProp name="resetInterpreter">false</boolProp>
-              <stringProp name="script">
-int x = Integer.parseInt(vars.get(&quot;userIdStart&quot;));
-int y = Integer.parseInt(vars.get(&quot;userIdEnd&quot;));
-int userId = x + ((int)(Math.random()*(y - x)));
+              <stringProp name="script">int x;
+int y;
+int userId;
+String userIdStr;
+String userIds;
+System.out.println(&quot;getThreadNum:&quot; + ctx.getThreadNum());
+if (ctx.getThreadNum() == 0) {
+	props.put(&quot;userIds&quot;, &quot;&quot;);
+}
+while (true){
+	x = Integer.parseInt(vars.get(&quot;userIdStart&quot;));
+	y = Integer.parseInt(vars.get(&quot;userIdEnd&quot;));
+	userId = x + ((int)(Math.random()*(y - x)));
+	userIdStr = userId.toString();
+	
+	userIds = props.get(&quot;userIds&quot;);
+	//System.out.println(&quot;userIds:   &quot;, userIds);
+	if (userIds == null || &quot;&quot;.equals(userIds)) {
+		userIds = &quot;#&quot; + userIdStr + &quot;#&quot;;
+		break;
+	} else if (userIds.indexOf(&quot;#&quot; + userIdStr + &quot;#&quot;) == -1){
+		userIds = userIds + &quot;#&quot; + userIdStr + &quot;#&quot;;
+		break;
+	}	
+}
 
-//int x = Integer.parseInt(vars.get(&quot;userIdTestStart&quot;));
-//int userId = x + 1;
-//System.out.println(&quot;userId: &quot; + userId);
-//vars.put(&quot;userIdTestStart&quot;, userId.toString());
+props.put(&quot;userIds&quot;, userIds);
+System.out.println(&quot;Login userIds: &quot; + props.get(&quot;userIds&quot;));
+
+
 
 vars.put(&quot;userId&quot;, userId.toString());
 vars.put(&quot;userName&quot;, vars.get(&quot;userPrefix&quot;) + userId);
 vars.put(&quot;user&quot;, vars.get(&quot;userPrefix&quot;) + userId + &quot;@&quot; + vars.get(&quot;userDomain&quot;));
 
-System.out.println(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
+System.out.println(&quot;user: &quot; + vars.get(&quot;user&quot;));
+
+log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </BeanShellPreProcessor>
             <hashTree/>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
