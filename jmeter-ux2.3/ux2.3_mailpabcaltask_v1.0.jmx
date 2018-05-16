@@ -127,8 +127,8 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${__P(threads, 1)}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${__P(rampUp, 1)}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threads, 50)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(rampUp, 50)}</stringProp>
         <longProp name="ThreadGroup.start_time">1484031390000</longProp>
         <longProp name="ThreadGroup.end_time">1484031390000</longProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
@@ -174,12 +174,19 @@
               <stringProp name="parameters"></stringProp>
               <boolProp name="resetInterpreter">false</boolProp>
               <stringProp name="script">
+String userIdStart = props.get(&quot;userIdStart&quot;);
+int x;
+int userId;
+if (userIdStart == null) {
+	x = Integer.parseInt(vars.get(&quot;userIdStart&quot;));
+} else {
+	x = Integer.parseInt(userIdStart);
+}
 
-int x = Integer.parseInt(vars.get(&quot;userIdStart&quot;));
-int userId = x;
+userId = x;
 
 x++;
-vars.put(&quot;userIdStart&quot;, x.toString());
+props.put(&quot;userIdStart&quot;, x.toString());
 
 
 vars.put(&quot;userId&quot;, userId.toString());
@@ -252,7 +259,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </RegexExtractor>
             <hashTree/>
           </hashTree>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${csrftoken} == &quot;&quot;" enabled="true">
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${csrftoken} == &quot;&quot;" enabled="false">
             <stringProp name="IfController.condition">${__jexl3(&quot;${csrftoken}&quot; == &quot;&quot;)}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
@@ -265,7 +272,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </TestAction>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-user.getCurrentUserInfo" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-user.getCurrentUserInfo" enabled="false">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="r" elementType="HTTPArgument">
@@ -346,7 +353,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </JSONPostProcessor>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-storage.account.list" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-storage.account.list" enabled="false">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="r" elementType="HTTPArgument">
@@ -419,7 +426,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-[{method:prefs.get} {method:timezone.get}]" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-[{method:prefs.get} {method:timezone.get}]" enabled="false">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="r" elementType="HTTPArgument">
@@ -493,7 +500,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-mail.preference.load" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-mail.preference.load" enabled="false">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="r" elementType="HTTPArgument">
@@ -567,7 +574,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-mail.message.list{page:{size:25 offset:0}}" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-mail.message.list{page:{size:25 offset:0}}" enabled="false">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="r" elementType="HTTPArgument">
@@ -679,7 +686,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-mail.folder.list" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-mail.folder.list" enabled="false">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="r" elementType="HTTPArgument">
@@ -759,7 +766,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T1-LOGIN-Rest-Action" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T1-LOGIN-Rest-Action" enabled="false">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -1229,7 +1236,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${msgId} != &quot;&quot;" enabled="true">
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${msgId} != &quot;&quot;" enabled="false">
           <stringProp name="IfController.condition">${__jexl3(&quot;${msgId}&quot; != &quot;&quot;)}</stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
           <boolProp name="IfController.useExpression">true</boolProp>
@@ -1330,7 +1337,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </hashTree>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T3-Compose and Send message" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T3-Compose and Send message" enabled="false">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -1453,7 +1460,7 @@ vars.put(&quot;mailBody&quot;, &quot;This is a mail from &quot; + user + &quot; 
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T4-Delete message" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T4-Delete message" enabled="false">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -1726,7 +1733,7 @@ vars.put(&quot;mailBody&quot;, &quot;This is a mail from &quot; + user + &quot; 
             </hashTree>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T5-Next Page" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T5-Next Page" enabled="false">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -2311,7 +2318,7 @@ vars.put(&quot;mailBody&quot;, &quot;This is a mail from &quot; + user + &quot; 
             </hashTree>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T7-Switch Folder to trash folder and switch back" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T7-Switch Folder to trash folder and switch back" enabled="false">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -2405,7 +2412,7 @@ vars.put(&quot;mailBody&quot;, &quot;This is a mail from &quot; + user + &quot; 
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T8-Clicks Contact tab and display" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T8-Clicks Contact tab and display" enabled="false">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -2895,7 +2902,7 @@ vars.put(&quot;mailBody&quot;, &quot;This is a mail from &quot; + user + &quot; 
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T9-Create 1 Contact" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T9-Create 1 Contact" enabled="false">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -2989,7 +2996,7 @@ vars.put(&quot;mailBody&quot;, &quot;This is a mail from &quot; + user + &quot; 
             <hashTree/>
           </hashTree>
         </hashTree>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${contactId} != &quot;&quot;" enabled="true">
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${contactId} != &quot;&quot;" enabled="false">
           <stringProp name="IfController.condition">${__jexl3(&quot;${contactId}&quot; != &quot;&quot;)}</stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
           <boolProp name="IfController.useExpression">true</boolProp>
@@ -3090,7 +3097,7 @@ vars.put(&quot;mailBody&quot;, &quot;This is a mail from &quot; + user + &quot; 
             </hashTree>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T11-Click Calendar and display" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T11-Click Calendar and display" enabled="false">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -3454,7 +3461,7 @@ vars.put(&quot;calEndTime&quot;, endDay.getTime().toString());</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T12-Create 1 Event" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T12-Create 1 Event" enabled="false">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -3590,7 +3597,7 @@ vars.put(&quot;eventLocalEnd&quot;, format.format(endTime));
             <hashTree/>
           </hashTree>
         </hashTree>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${eventId} != &quot;&quot;" enabled="true">
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${eventId} != &quot;&quot;" enabled="false">
           <stringProp name="IfController.condition">${__jexl3(&quot;${eventId}&quot; != &quot;&quot;)}</stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
           <boolProp name="IfController.useExpression">true</boolProp>
@@ -3770,7 +3777,7 @@ vars.put(&quot;eventLocalEnd&quot;, format.format(endTime));
             </hashTree>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T14-Click Task tab and display" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T14-Click Task tab and display" enabled="false">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -3948,7 +3955,7 @@ vars.put(&quot;eventLocalEnd&quot;, format.format(endTime));
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T15-Create 1 Task" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T15-Create 1 Task" enabled="false">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -4076,7 +4083,7 @@ if( Math.random() &lt; 0.1 ) {
             <hashTree/>
           </hashTree>
         </hashTree>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${taskId} != &quot;&quot;" enabled="true">
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${taskId} != &quot;&quot;" enabled="false">
           <stringProp name="IfController.condition">${__jexl3(&quot;${taskId}&quot; != &quot;&quot;)}</stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
           <boolProp name="IfController.useExpression">true</boolProp>
