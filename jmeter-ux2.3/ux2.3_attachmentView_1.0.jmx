@@ -85,6 +85,11 @@
             <stringProp name="Argument.desc">request timeout</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="invalidUserIds" elementType="Argument">
+            <stringProp name="Argument.name">invalidUserIds</stringProp>
+            <stringProp name="Argument.value">#x10524@rnl.dom##x10556@rnl.dom##x13639@rnl.dom##x14578@rnl.dom##x14587@rnl.dom##x17094@rnl.dom##x17937@rnl.dom##x18015@rnl.dom##x18062@rnl.dom##x18109@rnl.dom##x18634@rnl.dom##x18651@rnl.dom##x18652@rnl.dom##x18740@rnl.dom##x19134@rnl.dom##x19186@rnl.dom##x6594@rnl.dom##x7223@rnl.dom##x7266@rnl.dom##x7433@rnl.dom##x7465@rnl.dom##x7565@rnl.dom##x7712@rnl.dom##x7782@rnl.dom##x7872@rnl.dom##x7887@rnl.dom##x7986@rnl.dom##x8939@rnl.dom##x8977@rnl.dom##x9020@rnl.dom##x9025@rnl.dom#</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
@@ -170,7 +175,7 @@ String userIdStr;
 String userIds;
 System.out.println(&quot;getThreadNum:&quot; + ctx.getThreadNum());
 if (ctx.getThreadNum() == 0) {
-	props.put(&quot;userIds&quot;, &quot;&quot;);
+	props.put(&quot;userIds&quot;, vars.get(&quot;invalidUserIds&quot;));
 }
 while (true){
 	x = Integer.parseInt(vars.get(&quot;userIdStart&quot;));
