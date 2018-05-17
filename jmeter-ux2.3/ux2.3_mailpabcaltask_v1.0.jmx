@@ -69,7 +69,7 @@
           </elementProp>
           <elementProp name="timer" elementType="Argument">
             <stringProp name="Argument.name">timer</stringProp>
-            <stringProp name="Argument.value">1000</stringProp>
+            <stringProp name="Argument.value">3000</stringProp>
             <stringProp name="Argument.desc">thinking time</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -87,7 +87,7 @@
           </elementProp>
           <elementProp name="userIdStart" elementType="Argument">
             <stringProp name="Argument.name">userIdStart</stringProp>
-            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.value">1330</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="userIdEnd" elementType="Argument">
@@ -259,7 +259,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </RegexExtractor>
             <hashTree/>
           </hashTree>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${csrftoken} == &quot;&quot;" enabled="false">
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${csrftoken} == &quot;&quot;" enabled="true">
             <stringProp name="IfController.condition">${__jexl3(&quot;${csrftoken}&quot; == &quot;&quot;)}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
@@ -272,7 +272,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </TestAction>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-user.getCurrentUserInfo" enabled="false">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-user.getCurrentUserInfo" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="r" elementType="HTTPArgument">
@@ -353,7 +353,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </JSONPostProcessor>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-storage.account.list" enabled="false">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-storage.account.list" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="r" elementType="HTTPArgument">
@@ -426,7 +426,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-[{method:prefs.get} {method:timezone.get}]" enabled="false">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-[{method:prefs.get} {method:timezone.get}]" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="r" elementType="HTTPArgument">
@@ -500,7 +500,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-mail.preference.load" enabled="false">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-mail.preference.load" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="r" elementType="HTTPArgument">
@@ -574,7 +574,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-mail.message.list{page:{size:25 offset:0}}" enabled="false">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-mail.message.list{page:{size:25 offset:0}}" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="r" elementType="HTTPArgument">
@@ -686,7 +686,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-mail.folder.list" enabled="false">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t0-mail.folder.list" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="r" elementType="HTTPArgument">
@@ -766,7 +766,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T1-LOGIN-Rest-Action" enabled="false">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T1-LOGIN-Rest-Action" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -1236,7 +1236,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${msgId} != &quot;&quot;" enabled="false">
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${msgId} != &quot;&quot;" enabled="true">
           <stringProp name="IfController.condition">${__jexl3(&quot;${msgId}&quot; != &quot;&quot;)}</stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
           <boolProp name="IfController.useExpression">true</boolProp>
@@ -1337,7 +1337,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </hashTree>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T3-Compose and Send message" enabled="false">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T3-Compose and Send message" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -1460,7 +1460,7 @@ vars.put(&quot;mailBody&quot;, &quot;This is a mail from &quot; + user + &quot; 
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T4-Delete message" enabled="false">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T4-Delete message" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -1733,7 +1733,7 @@ vars.put(&quot;mailBody&quot;, &quot;This is a mail from &quot; + user + &quot; 
             </hashTree>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T5-Next Page" enabled="false">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T5-Next Page" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -2318,7 +2318,7 @@ vars.put(&quot;mailBody&quot;, &quot;This is a mail from &quot; + user + &quot; 
             </hashTree>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T7-Switch Folder to trash folder and switch back" enabled="false">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="T7-Switch Folder to trash folder and switch back" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -4350,7 +4350,7 @@ userIds = userIds.replace(&quot;#&quot; + userIdStr + &quot;#&quot;, &quot;&quot
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
-          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <boolProp name="ResultCollector.error_logging">true</boolProp>
           <objProp>
             <name>saveConfig</name>
             <value class="SampleSaveConfiguration">
