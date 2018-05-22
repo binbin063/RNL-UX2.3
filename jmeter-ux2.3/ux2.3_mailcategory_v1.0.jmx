@@ -11,8 +11,8 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
-        <stringProp name="filename">/root/ux2.3-test-data/jmeter-ux2.3/jmeter_users_range.dat</stringProp>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="false">
+        <stringProp name="filename">\root\ux2.3-test-data\jmeter-ux2.3\jmeter_users_range.dat</stringProp>
         <stringProp name="fileEncoding">UTF-8</stringProp>
         <stringProp name="variableNames">userIdStart,userIdEnd</stringProp>
         <boolProp name="ignoreFirstLine">false</boolProp>
@@ -69,7 +69,7 @@
           </elementProp>
           <elementProp name="timer" elementType="Argument">
             <stringProp name="Argument.name">timer</stringProp>
-            <stringProp name="Argument.value">30000</stringProp>
+            <stringProp name="Argument.value">120000</stringProp>
             <stringProp name="Argument.desc">thinking time</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -83,6 +83,16 @@
             <stringProp name="Argument.name">timeout</stringProp>
             <stringProp name="Argument.value">61000</stringProp>
             <stringProp name="Argument.desc">request timeout</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="userIdStart" elementType="Argument">
+            <stringProp name="Argument.name">userIdStart</stringProp>
+            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="userIdEnd" elementType="Argument">
+            <stringProp name="Argument.name">userIdEnd</stringProp>
+            <stringProp name="Argument.value">19500</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -117,11 +127,11 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${__P(threads, 1000)}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${__P(rampUp, 500)}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threads, 50)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(rampUp, 50)}</stringProp>
         <longProp name="ThreadGroup.start_time">1484031390000</longProp>
         <longProp name="ThreadGroup.end_time">1484031390000</longProp>
-        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration">${__P(duration, 600)}</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
@@ -164,18 +174,28 @@
               <stringProp name="parameters"></stringProp>
               <boolProp name="resetInterpreter">false</boolProp>
               <stringProp name="script">
-//int x = Integer.parseInt(vars.get(&quot;userIdStart&quot;));
-//int y = Integer.parseInt(vars.get(&quot;userIdEnd&quot;));
+String userIdStart = props.get(&quot;userIdStart&quot;);
+int x;
+int userId;
+if (userIdStart == null) {
+	x = Integer.parseInt(vars.get(&quot;userIdStart&quot;));
+} else {
+	x = Integer.parseInt(userIdStart);
+}
 
-int x = 1;
-int y = 10000;
-int userId = x + ((int)(Math.random()*(y - x)));
+userId = x;
+
+x++;
+props.put(&quot;userIdStart&quot;, x.toString());
+
 
 vars.put(&quot;userId&quot;, userId.toString());
 vars.put(&quot;userName&quot;, vars.get(&quot;userPrefix&quot;) + userId);
 vars.put(&quot;user&quot;, vars.get(&quot;userPrefix&quot;) + userId + &quot;@&quot; + vars.get(&quot;userDomain&quot;));
 
-System.out.println(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
+System.out.println(&quot;user: &quot; + vars.get(&quot;user&quot;));
+
+log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </BeanShellPreProcessor>
             <hashTree/>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
@@ -3228,8 +3248,8 @@ vars.put(&quot;mailBody&quot;, &quot;This is a mail from &quot; + user + &quot; 
             <hashTree/>
           </hashTree>
         </hashTree>
-        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="false">
-          <boolProp name="ResultCollector.error_logging">true</boolProp>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
             <value class="SampleSaveConfiguration">
@@ -3262,7 +3282,7 @@ vars.put(&quot;mailBody&quot;, &quot;This is a mail from &quot; + user + &quot; 
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">true</boolProp>
           <objProp>
             <name>saveConfig</name>
