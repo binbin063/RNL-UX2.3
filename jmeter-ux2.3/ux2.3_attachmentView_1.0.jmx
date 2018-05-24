@@ -11,7 +11,7 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="false">
         <stringProp name="filename">/root/ux2.3-test-data/jmeter-ux2.3/jmeter_users_range.dat</stringProp>
         <stringProp name="fileEncoding">UTF-8</stringProp>
         <stringProp name="variableNames">userIdStart,userIdEnd</stringProp>
@@ -69,7 +69,7 @@
           </elementProp>
           <elementProp name="timer" elementType="Argument">
             <stringProp name="Argument.name">timer</stringProp>
-            <stringProp name="Argument.value">120000</stringProp>
+            <stringProp name="Argument.value">60000</stringProp>
             <stringProp name="Argument.desc">thinking time</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -88,6 +88,16 @@
           <elementProp name="invalidUserIds" elementType="Argument">
             <stringProp name="Argument.name">invalidUserIds</stringProp>
             <stringProp name="Argument.value">#x10524@rnl.dom##x10556@rnl.dom##x13639@rnl.dom##x14578@rnl.dom##x14587@rnl.dom##x17094@rnl.dom##x17937@rnl.dom##x18015@rnl.dom##x18062@rnl.dom##x18109@rnl.dom##x18634@rnl.dom##x18651@rnl.dom##x18652@rnl.dom##x18740@rnl.dom##x19134@rnl.dom##x19186@rnl.dom##x6594@rnl.dom##x7223@rnl.dom##x7266@rnl.dom##x7433@rnl.dom##x7465@rnl.dom##x7565@rnl.dom##x7712@rnl.dom##x7782@rnl.dom##x7872@rnl.dom##x7887@rnl.dom##x7986@rnl.dom##x8939@rnl.dom##x8977@rnl.dom##x9020@rnl.dom##x9025@rnl.dom#</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="userIdStart" elementType="Argument">
+            <stringProp name="Argument.name">userIdStart</stringProp>
+            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="userIdEnd" elementType="Argument">
+            <stringProp name="Argument.name">userIdEnd</stringProp>
+            <stringProp name="Argument.value">19500</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -122,12 +132,12 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${__P(threads, 300)}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${__P(rampUp, 300)}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threads, 1200)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(rampUp, 1200)}</stringProp>
         <longProp name="ThreadGroup.start_time">1484031390000</longProp>
         <longProp name="ThreadGroup.end_time">1484031390000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">${__P(duration, 600)}</stringProp>
+        <stringProp name="ThreadGroup.duration">${__P(duration, 2000)}</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
@@ -1329,7 +1339,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </UniformRandomTimer>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t2-[{method:prefs.set}]" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="t2-[{method:prefs.set}]" enabled="false">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="r" elementType="HTTPArgument">
@@ -2608,7 +2618,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="false">
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -2642,7 +2652,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">true</boolProp>
           <objProp>
             <name>saveConfig</name>
