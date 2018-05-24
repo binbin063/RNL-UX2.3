@@ -183,7 +183,8 @@ int y;
 int userId;
 String userIdStr;
 String userIds;
-System.out.println(&quot;getThreadNum:&quot; + ctx.getThreadNum());
+//System.out.println(&quot;getThreadNum:&quot; + ctx.getThreadNum());
+log.info(&quot;getThreadNum:&quot; + ctx.getThreadNum());
 if (ctx.getThreadNum() == 0) {
 	props.put(&quot;userIds&quot;, vars.get(&quot;invalidUserIds&quot;));
 }
@@ -205,7 +206,8 @@ while (true){
 }
 
 props.put(&quot;userIds&quot;, userIds);
-System.out.println(&quot;Login userIds: &quot; + props.get(&quot;userIds&quot;));
+//System.out.println(&quot;Login userIds: &quot; + props.get(&quot;userIds&quot;));
+log.info(&quot;Login userIds: &quot; + props.get(&quot;userIds&quot;));
 
 
 
@@ -213,7 +215,7 @@ vars.put(&quot;userId&quot;, userId.toString());
 vars.put(&quot;userName&quot;, vars.get(&quot;userPrefix&quot;) + userId);
 vars.put(&quot;user&quot;, vars.get(&quot;userPrefix&quot;) + userId + &quot;@&quot; + vars.get(&quot;userDomain&quot;));
 
-System.out.println(&quot;user: &quot; + vars.get(&quot;user&quot;));
+//System.out.println(&quot;user: &quot; + vars.get(&quot;user&quot;));
 
 log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </BeanShellPreProcessor>
@@ -1424,6 +1426,13 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             <boolProp name="IfController.useExpression">true</boolProp>
           </IfController>
           <hashTree>
+            <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Record failed accounts" enabled="true">
+              <stringProp name="BeanShellSampler.query">System.out.println(&quot;failed userId: &quot; + vars.get(&quot;userId&quot;));</stringProp>
+              <stringProp name="BeanShellSampler.filename"></stringProp>
+              <stringProp name="BeanShellSampler.parameters"></stringProp>
+              <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+            </BeanShellSampler>
+            <hashTree/>
             <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Stop" enabled="true">
               <intProp name="ActionProcessor.action">0</intProp>
               <intProp name="ActionProcessor.target">0</intProp>
