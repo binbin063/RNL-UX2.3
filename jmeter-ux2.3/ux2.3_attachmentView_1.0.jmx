@@ -3415,8 +3415,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
         </TransactionController>
         <hashTree>
           <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${attachmentCount} &gt; 60" enabled="true">
-            <stringProp name="IfController.condition">${__jexl3(${attachmentCount} &gt; 60)}
-</stringProp>
+            <stringProp name="IfController.condition">${__jexl3(${attachmentCount} &gt; 60)}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
           </IfController>
@@ -3511,8 +3510,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </hashTree>
           </hashTree>
           <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${attachmentCount} &gt; 120" enabled="true">
-            <stringProp name="IfController.condition">${__jexl3(${attachmentCount} &gt; 120)}
-</stringProp>
+            <stringProp name="IfController.condition">${__jexl3(${attachmentCount} &gt; 120)}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
           </IfController>
@@ -3607,8 +3605,7 @@ log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </hashTree>
           </hashTree>
           <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${attachmentCount} &gt; 180" enabled="true">
-            <stringProp name="IfController.condition">${__jexl3(${attachmentCount} &gt; 180)}
-</stringProp>
+            <stringProp name="IfController.condition">${__jexl3(${attachmentCount} &gt; 180)}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
           </IfController>
