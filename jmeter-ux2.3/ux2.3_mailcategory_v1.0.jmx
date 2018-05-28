@@ -12,7 +12,7 @@
     </TestPlan>
     <hashTree>
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
-        <stringProp name="filename">/root/ux2.3-test-data/jmeter-ux2.3/jmeter_users_range.dat</stringProp>
+        <stringProp name="filename">\root\ux2.3-test-data\jmeter-ux2.3\jmeter_users_range.dat</stringProp>
         <stringProp name="fileEncoding">UTF-8</stringProp>
         <stringProp name="variableNames">userIdStart,userIdEnd</stringProp>
         <boolProp name="ignoreFirstLine">false</boolProp>
@@ -117,8 +117,8 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${__P(threads, 1000)}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${__P(rampUp, 500)}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threads, 1)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(rampUp, 1)}</stringProp>
         <longProp name="ThreadGroup.start_time">1484031390000</longProp>
         <longProp name="ThreadGroup.end_time">1484031390000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -163,19 +163,46 @@
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
               <boolProp name="resetInterpreter">false</boolProp>
-              <stringProp name="script">
-//int x = Integer.parseInt(vars.get(&quot;userIdStart&quot;));
-//int y = Integer.parseInt(vars.get(&quot;userIdEnd&quot;));
+              <stringProp name="script">int x;
+int y;
+int userId;
+String userIdStr;
+String userIds;
+//System.out.println(&quot;getThreadNum:&quot; + ctx.getThreadNum());
+log.info(&quot;getThreadNum:&quot; + ctx.getThreadNum());
+if (ctx.getThreadNum() == 0) {
+	props.put(&quot;userIds&quot;, vars.get(&quot;invalidUserIds&quot;));
+}
+while (true){
+	x = Integer.parseInt(vars.get(&quot;userIdStart&quot;));
+	y = Integer.parseInt(vars.get(&quot;userIdEnd&quot;));
+	userId = x + ((int)(Math.random()*(y - x)));
+	userIdStr = userId.toString();
+	
+	userIds = props.get(&quot;userIds&quot;);
+	//System.out.println(&quot;userIds:   &quot;, userIds);
+	if (userIds == null || &quot;&quot;.equals(userIds)) {
+		userIds = &quot;#&quot; + userIdStr + &quot;#&quot;;
+		break;
+	} else if (userIds.indexOf(&quot;#&quot; + userIdStr + &quot;#&quot;) == -1){
+		userIds = userIds + &quot;#&quot; + userIdStr + &quot;#&quot;;
+		break;
+	}	
+}
 
-int x = 1;
-int y = 10000;
-int userId = x + ((int)(Math.random()*(y - x)));
+props.put(&quot;userIds&quot;, userIds);
+//System.out.println(&quot;Login userIds: &quot; + props.get(&quot;userIds&quot;));
+log.info(&quot;Login userIds: &quot; + props.get(&quot;userIds&quot;));
+
+
 
 vars.put(&quot;userId&quot;, userId.toString());
 vars.put(&quot;userName&quot;, vars.get(&quot;userPrefix&quot;) + userId);
 vars.put(&quot;user&quot;, vars.get(&quot;userPrefix&quot;) + userId + &quot;@&quot; + vars.get(&quot;userDomain&quot;));
 
-System.out.println(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
+//System.out.println(&quot;user: &quot; + vars.get(&quot;user&quot;));
+
+log.info(&quot;user: &quot; + vars.get(&quot;user&quot;));</stringProp>
             </BeanShellPreProcessor>
             <hashTree/>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
