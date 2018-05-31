@@ -69,13 +69,13 @@
           </elementProp>
           <elementProp name="timer" elementType="Argument">
             <stringProp name="Argument.name">timer</stringProp>
-            <stringProp name="Argument.value">1200</stringProp>
+            <stringProp name="Argument.value">60000</stringProp>
             <stringProp name="Argument.desc">thinking time</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="randomOffset" elementType="Argument">
             <stringProp name="Argument.name">randomOffset</stringProp>
-            <stringProp name="Argument.value">100</stringProp>
+            <stringProp name="Argument.value">10000</stringProp>
             <stringProp name="Argument.desc">random offset for thinking time</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -137,8 +137,8 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${__P(threads, 1)}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${__P(rampUp, 1)}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threads, 1200)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(rampUp, 1200)}</stringProp>
         <longProp name="ThreadGroup.start_time">1484031390000</longProp>
         <longProp name="ThreadGroup.end_time">1484031390000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>

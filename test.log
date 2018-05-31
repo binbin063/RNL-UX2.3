@@ -1,0 +1,666 @@
+nohup: ignoring input
+Start Running! Sun May 27 22:31:40 EDT 2018
+Task: timeSync --> Start
+10.48.129.62 10.48.129.63 10.48.129.64 10.48.129.65 10.48.129.66 10.48.129.67
+Sync time on 10.48.129.62
+27 May 22:31:48 ntpdate[8232]: adjust time server 45.127.112.2 offset 0.009422 sec
+Sync time on 10.48.129.63
+27 May 22:31:55 ntpdate[21988]: adjust time server 209.208.79.69 offset 0.000261 sec
+Sync time on 10.48.129.64
+27 May 22:32:02 ntpdate[739]: step time server 45.127.112.2 offset 4.912640 sec
+Sync time on 10.48.129.65
+27 May 22:32:09 ntpdate[26491]: step time server 209.208.79.69 offset 2.521630 sec
+Sync time on 10.48.129.66
+27 May 22:32:17 ntpdate[31646]: step time server 209.208.79.69 offset 7.639647 sec
+Sync time on 10.48.129.67
+27 May 22:32:24 ntpdate[12429]: adjust time server 209.208.79.69 offset 0.000076 sec
+Sun May 27 22:32:24 EDT 2018
+Sun May 27 22:32:25 EDT 2018
+Sun May 27 22:32:25 EDT 2018
+Sun May 27 22:32:25 EDT 2018
+Sun May 27 22:32:26 EDT 2018
+Sun May 27 22:32:26 EDT 2018
+Task: timeSync --> End
+Task: monitoring --> Start
++ hostnames='mx-razgate01 mx-razgate02 mx-mail01 mx-mail02 mx-ux01 mx-ux02 mx-queue01 mx-queue02 mx-mss01 mx-mss02 mx-search01 mx-search02 mx-directory01 mx-directory02'
++ action=start
++ loc=
++ dir_monitor=/root/ux2.3-test-data/monitor
++ '[' '' = '' ']'
+++ pwd
++ location=/root/ux2.3-test-data/tmp
++ '[' start = stop ']'
++ '[' start = start ']'
++ for h in '$hostnames'
++ echo 'Start monitoring on mx-razgate01'
+Start monitoring on mx-razgate01
++ ssh -o BatchMode=yes root@mx-razgate01 'cd /root/ux2.3-test-data/monitor;./yz_monitor > output.txt </dev/null 2>&1 &'
++ for h in '$hostnames'
++ echo 'Start monitoring on mx-razgate02'
+Start monitoring on mx-razgate02
++ ssh -o BatchMode=yes root@mx-razgate02 'cd /root/ux2.3-test-data/monitor;./yz_monitor > output.txt </dev/null 2>&1 &'
++ for h in '$hostnames'
++ echo 'Start monitoring on mx-mail01'
+Start monitoring on mx-mail01
++ ssh -o BatchMode=yes root@mx-mail01 'cd /root/ux2.3-test-data/monitor;./yz_monitor > output.txt </dev/null 2>&1 &'
++ for h in '$hostnames'
++ echo 'Start monitoring on mx-mail02'
+Start monitoring on mx-mail02
++ ssh -o BatchMode=yes root@mx-mail02 'cd /root/ux2.3-test-data/monitor;./yz_monitor > output.txt </dev/null 2>&1 &'
++ for h in '$hostnames'
++ echo 'Start monitoring on mx-ux01'
+Start monitoring on mx-ux01
++ ssh -o BatchMode=yes root@mx-ux01 'cd /root/ux2.3-test-data/monitor;./yz_monitor > output.txt </dev/null 2>&1 &'
++ for h in '$hostnames'
++ echo 'Start monitoring on mx-ux02'
+Start monitoring on mx-ux02
++ ssh -o BatchMode=yes root@mx-ux02 'cd /root/ux2.3-test-data/monitor;./yz_monitor > output.txt </dev/null 2>&1 &'
++ for h in '$hostnames'
++ echo 'Start monitoring on mx-queue01'
+Start monitoring on mx-queue01
++ ssh -o BatchMode=yes root@mx-queue01 'cd /root/ux2.3-test-data/monitor;./yz_monitor > output.txt </dev/null 2>&1 &'
++ for h in '$hostnames'
++ echo 'Start monitoring on mx-queue02'
+Start monitoring on mx-queue02
++ ssh -o BatchMode=yes root@mx-queue02 'cd /root/ux2.3-test-data/monitor;./yz_monitor > output.txt </dev/null 2>&1 &'
++ for h in '$hostnames'
++ echo 'Start monitoring on mx-mss01'
+Start monitoring on mx-mss01
++ ssh -o BatchMode=yes root@mx-mss01 'cd /root/ux2.3-test-data/monitor;./yz_monitor > output.txt </dev/null 2>&1 &'
++ for h in '$hostnames'
++ echo 'Start monitoring on mx-mss02'
+Start monitoring on mx-mss02
++ ssh -o BatchMode=yes root@mx-mss02 'cd /root/ux2.3-test-data/monitor;./yz_monitor > output.txt </dev/null 2>&1 &'
++ for h in '$hostnames'
++ echo 'Start monitoring on mx-search01'
+Start monitoring on mx-search01
++ ssh -o BatchMode=yes root@mx-search01 'cd /root/ux2.3-test-data/monitor;./yz_monitor > output.txt </dev/null 2>&1 &'
++ for h in '$hostnames'
++ echo 'Start monitoring on mx-search02'
+Start monitoring on mx-search02
++ ssh -o BatchMode=yes root@mx-search02 'cd /root/ux2.3-test-data/monitor;./yz_monitor > output.txt </dev/null 2>&1 &'
++ for h in '$hostnames'
++ echo 'Start monitoring on mx-directory01'
+Start monitoring on mx-directory01
++ ssh -o BatchMode=yes root@mx-directory01 'cd /root/ux2.3-test-data/monitor;./yz_monitor > output.txt </dev/null 2>&1 &'
++ for h in '$hostnames'
++ echo 'Start monitoring on mx-directory02'
+Start monitoring on mx-directory02
++ ssh -o BatchMode=yes root@mx-directory02 'cd /root/ux2.3-test-data/monitor;./yz_monitor > output.txt </dev/null 2>&1 &'
+Task: Running Jemter test --> Start
+Issuing: /root/apache-jmeter-3.3/bin/jmeter -n -r -t ./jmeter-ux2.3/ux2.3_attachmentView_1.0.jmx  -G./jmeter-ux2.3/test.properties -l /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/jmeter-result/20180527223140_ux2.3_attachmentView_1000.jtl -j /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/jmeter-result/20180527223140_ux2.3_attachmentView_1000.log
+Creating summariser <summary>
+Created the tree successfully using ./jmeter-ux2.3/ux2.3_attachmentView_1.0.jmx
+Configuring remote engine: 10.48.129.63:1888
+Configuring remote engine: 10.48.129.64:1888
+Configuring remote engine: 10.48.129.65:1888
+Configuring remote engine: 10.48.129.66:1888
+Configuring remote engine: 10.48.129.67:1888
+Starting remote engines
+Starting the test @ Sun May 27 22:32:50 EDT 2018 (1527474770814)
+Remote engines have been started
+Waiting for possible Shutdown/StopTestNow/Heapdump message on port 4445
+summary +    806 in 00:00:38 =   21.5/s Avg:   734 Min:     6 Max: 15648 Err:     0 (0.00%) Active: 178 Started: 174 Finished: 0
+summary +    700 in 00:00:32 =   21.8/s Avg:  1440 Min:     5 Max: 18410 Err:     0 (0.00%) Active: 337 Started: 333 Finished: 0
+summary =   1506 in 00:01:10 =   21.6/s Avg:  1062 Min:     5 Max: 18410 Err:     0 (0.00%)
+summary +   1000 in 00:00:33 =   29.9/s Avg:  1653 Min:     5 Max: 61020 Err:     1 (0.10%) Active: 502 Started: 498 Finished: 0
+summary =   2506 in 00:01:43 =   24.3/s Avg:  1298 Min:     5 Max: 61020 Err:     1 (0.04%)
+summary +   2414 in 00:00:59 =   41.0/s Avg:  1225 Min:     4 Max: 21984 Err:     0 (0.00%) Active: 792 Started: 788 Finished: 0
+summary =   4920 in 00:02:42 =   30.4/s Avg:  1262 Min:     4 Max: 61020 Err:     1 (0.02%)
+summary +   1466 in 00:00:26 =   57.1/s Avg:   630 Min:     4 Max: 10131 Err:     0 (0.00%) Active: 919 Started: 915 Finished: 0
+summary =   6386 in 00:03:08 =   34.1/s Avg:  1117 Min:     4 Max: 61020 Err:     1 (0.02%)
+summary +   1281 in 00:00:34 =   37.7/s Avg:   647 Min:     5 Max: 10211 Err:     0 (0.00%) Active: 1000 Started: 996 Finished: 0
+summary =   7667 in 00:03:42 =   34.6/s Avg:  1039 Min:     4 Max: 61020 Err:     1 (0.01%)
+summary +   1639 in 00:00:58 =   28.1/s Avg:   409 Min:     4 Max:  9332 Err:     0 (0.00%) Active: 1000 Started: 996 Finished: 0
+summary =   9306 in 00:04:40 =   33.2/s Avg:   928 Min:     4 Max: 61020 Err:     1 (0.01%)
+summary +   2200 in 00:02:01 =   18.2/s Avg:   349 Min:     5 Max:  4513 Err:     0 (0.00%) Active: 1000 Started: 996 Finished: 0
+summary =  11506 in 00:06:41 =   28.7/s Avg:   817 Min:     4 Max: 61020 Err:     1 (0.01%)
+summary +    300 in 00:00:30 =   10.1/s Avg:  1923 Min:    20 Max: 18635 Err:     0 (0.00%) Active: 999 Started: 996 Finished: 1
+summary =  11806 in 00:07:11 =   27.4/s Avg:   845 Min:     4 Max: 61020 Err:     1 (0.01%)
+summary +    200 in 00:00:30 =    6.6/s Avg:  5554 Min:    24 Max: 61067 Err:     3 (1.50%) Active: 996 Started: 996 Finished: 4
+summary =  12006 in 00:07:41 =   26.0/s Avg:   924 Min:     4 Max: 61067 Err:     4 (0.03%)
+summary +    250 in 00:01:00 =    4.2/s Avg: 12277 Min:    23 Max: 61063 Err:    11 (4.40%) Active: 974 Started: 996 Finished: 26
+summary =  12256 in 00:08:41 =   23.5/s Avg:  1155 Min:     4 Max: 61067 Err:    15 (0.12%)
+summary +    187 in 00:00:27 =    7.0/s Avg: 27284 Min:    23 Max: 61062 Err:     1 (0.53%) Active: 953 Started: 996 Finished: 47
+summary =  12443 in 00:09:08 =   22.7/s Avg:  1548 Min:     4 Max: 61067 Err:    16 (0.13%)
+summary +    349 in 00:00:32 =   10.8/s Avg: 25448 Min:   184 Max: 61070 Err:    53 (15.19%) Active: 817 Started: 996 Finished: 183
+summary =  12792 in 00:09:40 =   22.1/s Avg:  2200 Min:     4 Max: 61070 Err:    69 (0.54%)
+summary +   3213 in 00:08:28 =    6.3/s Avg:  9516 Min:    32 Max: 61073 Err:   454 (14.13%) Active: 478 Started: 996 Finished: 522
+summary =  16005 in 00:18:08 =   14.7/s Avg:  3669 Min:     4 Max: 61073 Err:   523 (3.27%)
+summary +    330 in 00:01:01 =    5.4/s Avg:  1025 Min:    35 Max:  3912 Err:     0 (0.00%) Active: 478 Started: 996 Finished: 522
+summary =  16335 in 00:19:09 =   14.2/s Avg:  3615 Min:     4 Max: 61073 Err:   523 (3.20%)
+summary +    384 in 00:01:02 =    6.2/s Avg:   973 Min:    33 Max:  4520 Err:     0 (0.00%) Active: 478 Started: 996 Finished: 522
+summary =  16719 in 00:20:11 =   13.8/s Avg:  3555 Min:     4 Max: 61073 Err:   523 (3.13%)
+summary +    173 in 00:00:26 =    6.6/s Avg:   924 Min:    35 Max:  6799 Err:     0 (0.00%) Active: 478 Started: 996 Finished: 522
+summary =  16892 in 00:20:38 =   13.6/s Avg:  3528 Min:     4 Max: 61073 Err:   523 (3.10%)
+run_jmeter.sh: line 92:  8337 Killed                  $cmd
+Task: Running Jemter test --> done
+Task: monitoring --> Stop
+./monitor/monitor_yz stop /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ hostnames='mx-razgate01 mx-razgate02 mx-mail01 mx-mail02 mx-ux01 mx-ux02 mx-queue01 mx-queue02 mx-mss01 mx-mss02 mx-search01 mx-search02 mx-directory01 mx-directory02'
++ action=stop
++ loc=/root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ dir_monitor=/root/ux2.3-test-data/monitor
++ '[' /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result = '' ']'
++ location=/root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ '[' stop = stop ']'
++ rm -rf /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ mkdir -p /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ echo 'Results will be copied to /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result'
+Results will be copied to /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ for h in '$hostnames'
++ echo 'Stopping monitoring on mx-razgate01'
+Stopping monitoring on mx-razgate01
++ ssh -o BatchMode=yes root@mx-razgate01 'cd /root/ux2.3-test-data/monitor;./yz_stop_monitor'
+++ ps -ef
+++ grep yz_mem
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='22464 28623 '
++ kill -9 22464 28623
+./yz_stop_monitor: line 7: kill: (22464) - No such process
+++ ps -ef
+++ grep sar
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='22469 28617 28618 '
++ kill -9 22469 28617 28618
+./yz_stop_monitor: line 10: kill: (22469) - No such process
+++ hostname
++ host=mx-razgate01
++ file=yz_cpu_mx-razgate01.out
++ '[' -f yz_cpu_mx-razgate01.out ']'
++ grep all yz_cpu_mx-razgate01.out
++ awk '{print $4;}'
++ file=yz_mem_mx-razgate01.out
++ '[' -f yz_mem_mx-razgate01.out ']'
++ cat yz_mem_mx-razgate01.out
++ awk '{print $3;}'
++ file=yz_io_mx-razgate01.out
++ '[' -f yz_io_mx-razgate01.out ']'
++ cat yz_io_mx-razgate01.out
++ awk '{print $4;}'
++ cat yz_io_mx-razgate01.out
++ awk '{print $5;}'
++ scp -o BatchMode=yes 'root@mx-razgate01:/root/ux2.3-test-data/monitor/yz*txt' /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ for h in '$hostnames'
++ echo 'Stopping monitoring on mx-razgate02'
+Stopping monitoring on mx-razgate02
++ ssh -o BatchMode=yes root@mx-razgate02 'cd /root/ux2.3-test-data/monitor;./yz_stop_monitor'
+++ ps -ef
+++ grep yz_mem
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='1635 7771 '
++ kill -9 1635 7771
+./yz_stop_monitor: line 7: kill: (1635) - No such process
+++ ps -ef
+++ grep sar
+++ tr '\n' ' '
+++ awk '{print $2;}'
++ pid='1640 7765 7766 '
++ kill -9 1640 7765 7766
+./yz_stop_monitor: line 10: kill: (1640) - No such process
+++ hostname
++ host=mx-razgate02
++ file=yz_cpu_mx-razgate02.out
++ '[' -f yz_cpu_mx-razgate02.out ']'
++ grep all yz_cpu_mx-razgate02.out
++ awk '{print $4;}'
++ file=yz_mem_mx-razgate02.out
++ '[' -f yz_mem_mx-razgate02.out ']'
++ cat yz_mem_mx-razgate02.out
++ awk '{print $3;}'
++ file=yz_io_mx-razgate02.out
++ '[' -f yz_io_mx-razgate02.out ']'
++ cat yz_io_mx-razgate02.out
++ awk '{print $4;}'
++ cat yz_io_mx-razgate02.out
++ awk '{print $5;}'
++ scp -o BatchMode=yes 'root@mx-razgate02:/root/ux2.3-test-data/monitor/yz*txt' /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ for h in '$hostnames'
++ echo 'Stopping monitoring on mx-mail01'
+Stopping monitoring on mx-mail01
++ ssh -o BatchMode=yes root@mx-mail01 'cd /root/ux2.3-test-data/monitor;./yz_stop_monitor'
+++ grep yz_mem
+++ ps -ef
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='15437 16976 '
++ kill -9 15437 16976
+./yz_stop_monitor: line 7: kill: (16976) - No such process
+++ ps -ef
+++ grep sar
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='15433 15434 16981 '
++ kill -9 15433 15434 16981
+./yz_stop_monitor: line 10: kill: (16981) - No such process
+++ hostname
++ host=mx-mail01
++ file=yz_cpu_mx-mail01.out
++ '[' -f yz_cpu_mx-mail01.out ']'
++ grep all yz_cpu_mx-mail01.out
++ awk '{print $4;}'
++ file=yz_mem_mx-mail01.out
++ '[' -f yz_mem_mx-mail01.out ']'
++ cat yz_mem_mx-mail01.out
++ awk '{print $3;}'
++ file=yz_io_mx-mail01.out
++ '[' -f yz_io_mx-mail01.out ']'
++ cat yz_io_mx-mail01.out
++ awk '{print $4;}'
++ cat yz_io_mx-mail01.out
++ awk '{print $5;}'
++ scp -o BatchMode=yes 'root@mx-mail01:/root/ux2.3-test-data/monitor/yz*txt' /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ for h in '$hostnames'
++ echo 'Stopping monitoring on mx-mail02'
+Stopping monitoring on mx-mail02
++ ssh -o BatchMode=yes root@mx-mail02 'cd /root/ux2.3-test-data/monitor;./yz_stop_monitor'
+++ ps -ef
+++ grep yz_mem
+++ tr '\n' ' '
+++ awk '{print $2;}'
++ pid='27629 29081 '
++ kill -9 27629 29081
+./yz_stop_monitor: line 7: kill: (29081) - No such process
+++ ps -ef
+++ grep sar
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='27625 27626 29087 '
++ kill -9 27625 27626 29087
+./yz_stop_monitor: line 10: kill: (29087) - No such process
+++ hostname
++ host=mx-mail02
++ file=yz_cpu_mx-mail02.out
++ '[' -f yz_cpu_mx-mail02.out ']'
++ grep all yz_cpu_mx-mail02.out
++ awk '{print $4;}'
++ file=yz_mem_mx-mail02.out
++ '[' -f yz_mem_mx-mail02.out ']'
++ cat yz_mem_mx-mail02.out
++ awk '{print $3;}'
++ file=yz_io_mx-mail02.out
++ '[' -f yz_io_mx-mail02.out ']'
++ cat yz_io_mx-mail02.out
++ awk '{print $4;}'
++ cat yz_io_mx-mail02.out
++ awk '{print $5;}'
++ scp -o BatchMode=yes 'root@mx-mail02:/root/ux2.3-test-data/monitor/yz*txt' /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ for h in '$hostnames'
++ echo 'Stopping monitoring on mx-ux01'
+Stopping monitoring on mx-ux01
++ ssh -o BatchMode=yes root@mx-ux01 'cd /root/ux2.3-test-data/monitor;./yz_stop_monitor'
+++ ps -ef
+++ grep yz_mem
+++ tr '\n' ' '
+++ awk '{print $2;}'
++ pid='20224 21344 '
++ kill -9 20224 21344
+./yz_stop_monitor: line 7: kill: (21344) - No such process
+++ ps -ef
+++ grep sar
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='20220 20221 21349 '
++ kill -9 20220 20221 21349
+./yz_stop_monitor: line 10: kill: (21349) - No such process
+++ hostname
++ host=mx-ux01
++ file=yz_cpu_mx-ux01.out
++ '[' -f yz_cpu_mx-ux01.out ']'
++ grep all yz_cpu_mx-ux01.out
++ awk '{print $4;}'
++ file=yz_mem_mx-ux01.out
++ '[' -f yz_mem_mx-ux01.out ']'
++ cat yz_mem_mx-ux01.out
++ awk '{print $3;}'
++ file=yz_io_mx-ux01.out
++ '[' -f yz_io_mx-ux01.out ']'
++ cat yz_io_mx-ux01.out
++ awk '{print $4;}'
++ cat yz_io_mx-ux01.out
++ awk '{print $5;}'
++ scp -o BatchMode=yes 'root@mx-ux01:/root/ux2.3-test-data/monitor/yz*txt' /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ for h in '$hostnames'
++ echo 'Stopping monitoring on mx-ux02'
+Stopping monitoring on mx-ux02
++ ssh -o BatchMode=yes root@mx-ux02 'cd /root/ux2.3-test-data/monitor;./yz_stop_monitor'
+++ ps -ef
+++ grep yz_mem
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='27237 28687 '
++ kill -9 27237 28687
+./yz_stop_monitor: line 7: kill: (28687) - No such process
+++ ps -ef
+++ grep sar
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='27233 27234 28693 '
++ kill -9 27233 27234 28693
+./yz_stop_monitor: line 10: kill: (28693) - No such process
+++ hostname
++ host=mx-ux02
++ file=yz_cpu_mx-ux02.out
++ '[' -f yz_cpu_mx-ux02.out ']'
++ grep all yz_cpu_mx-ux02.out
++ awk '{print $4;}'
++ file=yz_mem_mx-ux02.out
++ '[' -f yz_mem_mx-ux02.out ']'
++ cat yz_mem_mx-ux02.out
++ awk '{print $3;}'
++ file=yz_io_mx-ux02.out
++ '[' -f yz_io_mx-ux02.out ']'
++ cat yz_io_mx-ux02.out
++ awk '{print $4;}'
++ cat yz_io_mx-ux02.out
++ awk '{print $5;}'
++ scp -o BatchMode=yes 'root@mx-ux02:/root/ux2.3-test-data/monitor/yz*txt' /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ for h in '$hostnames'
++ echo 'Stopping monitoring on mx-queue01'
+Stopping monitoring on mx-queue01
++ ssh -o BatchMode=yes root@mx-queue01 'cd /root/ux2.3-test-data/monitor;./yz_stop_monitor'
+++ ps -ef
+++ grep yz_mem
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='23168 24660 '
++ kill -9 23168 24660
+./yz_stop_monitor: line 7: kill: (24660) - No such process
+++ ps -ef
+++ grep sar
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='23164 23165 24665 '
++ kill -9 23164 23165 24665
+./yz_stop_monitor: line 10: kill: (24665) - No such process
+++ hostname
++ host=mx-queue01
++ file=yz_cpu_mx-queue01.out
++ '[' -f yz_cpu_mx-queue01.out ']'
++ grep all yz_cpu_mx-queue01.out
++ awk '{print $4;}'
++ file=yz_mem_mx-queue01.out
++ '[' -f yz_mem_mx-queue01.out ']'
++ cat yz_mem_mx-queue01.out
++ awk '{print $3;}'
++ file=yz_io_mx-queue01.out
++ '[' -f yz_io_mx-queue01.out ']'
++ cat yz_io_mx-queue01.out
++ awk '{print $4;}'
++ cat yz_io_mx-queue01.out
++ awk '{print $5;}'
++ scp -o BatchMode=yes 'root@mx-queue01:/root/ux2.3-test-data/monitor/yz*txt' /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ for h in '$hostnames'
++ echo 'Stopping monitoring on mx-queue02'
+Stopping monitoring on mx-queue02
++ ssh -o BatchMode=yes root@mx-queue02 'cd /root/ux2.3-test-data/monitor;./yz_stop_monitor'
+++ ps -ef
+++ grep yz_mem
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='337 1833 '
++ kill -9 337 1833
+./yz_stop_monitor: line 7: kill: (1833) - No such process
+++ ps -ef
+++ grep sar
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='333 334 1838 '
++ kill -9 333 334 1838
+./yz_stop_monitor: line 10: kill: (1838) - No such process
+++ hostname
++ host=mx-queue02
++ file=yz_cpu_mx-queue02.out
++ '[' -f yz_cpu_mx-queue02.out ']'
++ grep all yz_cpu_mx-queue02.out
++ awk '{print $4;}'
++ file=yz_mem_mx-queue02.out
++ '[' -f yz_mem_mx-queue02.out ']'
++ cat yz_mem_mx-queue02.out
++ awk '{print $3;}'
++ file=yz_io_mx-queue02.out
++ '[' -f yz_io_mx-queue02.out ']'
++ cat yz_io_mx-queue02.out
++ awk '{print $4;}'
++ cat yz_io_mx-queue02.out
++ awk '{print $5;}'
++ scp -o BatchMode=yes 'root@mx-queue02:/root/ux2.3-test-data/monitor/yz*txt' /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ for h in '$hostnames'
++ echo 'Stopping monitoring on mx-mss01'
+Stopping monitoring on mx-mss01
++ ssh -o BatchMode=yes root@mx-mss01 'cd /root/ux2.3-test-data/monitor;./yz_stop_monitor'
+++ ps -ef
+++ grep yz_mem
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='621 1114 '
++ kill -9 621 1114
+./yz_stop_monitor: line 7: kill: (1114) - No such process
+++ ps -ef
+++ grep sar
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='617 618 1121 '
++ kill -9 617 618 1121
+./yz_stop_monitor: line 10: kill: (1121) - No such process
+++ hostname
++ host=mx-mss01
++ file=yz_cpu_mx-mss01.out
++ '[' -f yz_cpu_mx-mss01.out ']'
++ grep all yz_cpu_mx-mss01.out
++ awk '{print $4;}'
++ file=yz_mem_mx-mss01.out
++ '[' -f yz_mem_mx-mss01.out ']'
++ cat yz_mem_mx-mss01.out
++ awk '{print $3;}'
++ file=yz_io_mx-mss01.out
++ '[' -f yz_io_mx-mss01.out ']'
++ cat yz_io_mx-mss01.out
++ awk '{print $4;}'
++ cat yz_io_mx-mss01.out
++ awk '{print $5;}'
++ scp -o BatchMode=yes 'root@mx-mss01:/root/ux2.3-test-data/monitor/yz*txt' /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ for h in '$hostnames'
++ echo 'Stopping monitoring on mx-mss02'
+Stopping monitoring on mx-mss02
++ ssh -o BatchMode=yes root@mx-mss02 'cd /root/ux2.3-test-data/monitor;./yz_stop_monitor'
+++ ps -ef
+++ grep yz_mem
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='14272 15765 '
++ kill -9 14272 15765
+./yz_stop_monitor: line 7: kill: (15765) - No such process
+++ ps -ef
+++ grep sar
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='14268 14269 15770 '
++ kill -9 14268 14269 15770
+./yz_stop_monitor: line 10: kill: (15770) - No such process
+++ hostname
++ host=mx-mss02
++ file=yz_cpu_mx-mss02.out
++ '[' -f yz_cpu_mx-mss02.out ']'
++ grep all yz_cpu_mx-mss02.out
++ awk '{print $4;}'
++ file=yz_mem_mx-mss02.out
++ '[' -f yz_mem_mx-mss02.out ']'
++ cat yz_mem_mx-mss02.out
++ awk '{print $3;}'
++ file=yz_io_mx-mss02.out
++ '[' -f yz_io_mx-mss02.out ']'
++ cat yz_io_mx-mss02.out
++ awk '{print $4;}'
++ cat yz_io_mx-mss02.out
++ awk '{print $5;}'
++ scp -o BatchMode=yes 'root@mx-mss02:/root/ux2.3-test-data/monitor/yz*txt' /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ for h in '$hostnames'
++ echo 'Stopping monitoring on mx-search01'
+Stopping monitoring on mx-search01
++ ssh -o BatchMode=yes root@mx-search01 'cd /root/ux2.3-test-data/monitor;./yz_stop_monitor'
+++ ps -ef
+++ grep yz_mem
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='8117 9592 '
++ kill -9 8117 9592
+./yz_stop_monitor: line 7: kill: (9592) - No such process
+++ ps -ef
+++ grep sar
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='8111 8112 9597 '
++ kill -9 8111 8112 9597
+./yz_stop_monitor: line 10: kill: (9597) - No such process
+++ hostname
++ host=mx-search01
++ file=yz_cpu_mx-search01.out
++ '[' -f yz_cpu_mx-search01.out ']'
++ grep all yz_cpu_mx-search01.out
++ awk '{print $4;}'
++ file=yz_mem_mx-search01.out
++ '[' -f yz_mem_mx-search01.out ']'
++ cat yz_mem_mx-search01.out
++ awk '{print $3;}'
++ file=yz_io_mx-search01.out
++ '[' -f yz_io_mx-search01.out ']'
++ cat yz_io_mx-search01.out
++ awk '{print $4;}'
++ cat yz_io_mx-search01.out
++ awk '{print $5;}'
++ scp -o BatchMode=yes 'root@mx-search01:/root/ux2.3-test-data/monitor/yz*txt' /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ for h in '$hostnames'
++ echo 'Stopping monitoring on mx-search02'
+Stopping monitoring on mx-search02
++ ssh -o BatchMode=yes root@mx-search02 'cd /root/ux2.3-test-data/monitor;./yz_stop_monitor'
+++ ps -ef
+++ grep yz_mem
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='8065 9541 '
++ kill -9 8065 9541
+./yz_stop_monitor: line 7: kill: (9541) - No such process
+++ ps -ef
+++ grep sar
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='8059 8060 9546 '
++ kill -9 8059 8060 9546
+./yz_stop_monitor: line 10: kill: (9546) - No such process
+++ hostname
++ host=mx-search02
++ file=yz_cpu_mx-search02.out
++ '[' -f yz_cpu_mx-search02.out ']'
++ grep all yz_cpu_mx-search02.out
++ awk '{print $4;}'
++ file=yz_mem_mx-search02.out
++ '[' -f yz_mem_mx-search02.out ']'
++ cat yz_mem_mx-search02.out
++ awk '{print $3;}'
++ file=yz_io_mx-search02.out
++ '[' -f yz_io_mx-search02.out ']'
++ cat yz_io_mx-search02.out
++ awk '{print $4;}'
++ cat yz_io_mx-search02.out
++ awk '{print $5;}'
++ scp -o BatchMode=yes 'root@mx-search02:/root/ux2.3-test-data/monitor/yz*txt' /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ for h in '$hostnames'
++ echo 'Stopping monitoring on mx-directory01'
+Stopping monitoring on mx-directory01
++ ssh -o BatchMode=yes root@mx-directory01 'cd /root/ux2.3-test-data/monitor;./yz_stop_monitor'
+++ ps -ef
+++ grep yz_mem
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='6410 29720 '
++ kill -9 6410 29720
+./yz_stop_monitor: line 7: kill: (6410) - No such process
+++ ps -ef
+++ grep sar
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='6417 29716 29717 '
++ kill -9 6417 29716 29717
+./yz_stop_monitor: line 10: kill: (6417) - No such process
+++ hostname
++ host=mx-directory01
++ file=yz_cpu_mx-directory01.out
++ '[' -f yz_cpu_mx-directory01.out ']'
++ grep all yz_cpu_mx-directory01.out
++ awk '{print $4;}'
++ file=yz_mem_mx-directory01.out
++ '[' -f yz_mem_mx-directory01.out ']'
++ cat yz_mem_mx-directory01.out
++ awk '{print $3;}'
++ file=yz_io_mx-directory01.out
++ '[' -f yz_io_mx-directory01.out ']'
++ cat yz_io_mx-directory01.out
++ awk '{print $4;}'
++ cat yz_io_mx-directory01.out
++ awk '{print $5;}'
++ scp -o BatchMode=yes 'root@mx-directory01:/root/ux2.3-test-data/monitor/yz*txt' /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
++ for h in '$hostnames'
++ echo 'Stopping monitoring on mx-directory02'
+Stopping monitoring on mx-directory02
++ ssh -o BatchMode=yes root@mx-directory02 'cd /root/ux2.3-test-data/monitor;./yz_stop_monitor'
+++ ps -ef
+++ grep yz_mem
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='7348 8831 '
++ kill -9 7348 8831
+./yz_stop_monitor: line 7: kill: (8831) - No such process
+++ ps -ef
+++ grep sar
+++ awk '{print $2;}'
+++ tr '\n' ' '
++ pid='7344 7345 8836 '
++ kill -9 7344 7345 8836
+./yz_stop_monitor: line 10: kill: (8836) - No such process
+++ hostname
++ host=mx-directory02
++ file=yz_cpu_mx-directory02.out
++ '[' -f yz_cpu_mx-directory02.out ']'
++ grep all yz_cpu_mx-directory02.out
++ awk '{print $4;}'
++ file=yz_mem_mx-directory02.out
++ '[' -f yz_mem_mx-directory02.out ']'
++ cat yz_mem_mx-directory02.out
++ awk '{print $3;}'
++ file=yz_io_mx-directory02.out
++ '[' -f yz_io_mx-directory02.out ']'
++ cat yz_io_mx-directory02.out
++ awk '{print $4;}'
++ cat yz_io_mx-directory02.out
++ awk '{print $5;}'
++ scp -o BatchMode=yes 'root@mx-directory02:/root/ux2.3-test-data/monitor/yz*txt' /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/monitor-result
+Task: process monitoring result--> Start
+Plot CPU MEM IO for mx-razgate01
+Plot CPU MEM IO for mx-razgate02
+Plot CPU MEM IO for mx-mail01
+Plot CPU MEM IO for mx-mail02
+Plot CPU MEM IO for mx-ux01
+Plot CPU MEM IO for mx-ux02
+Plot CPU MEM IO for mx-queue01
+Plot CPU MEM IO for mx-queue02
+Plot CPU MEM IO for mx-mss01
+Plot CPU MEM IO for mx-mss02
+Plot CPU MEM IO for mx-search01
+Plot CPU MEM IO for mx-search02
+Plot CPU MEM IO for mx-directory01
+Plot CPU MEM IO for mx-directory02
+Task: process monitoring result--> done
+Task: Generating Jmeter report --> Start
+run_jmeter.sh: line 130: ![: command not found
+Generate CSV File: /root/apache-jmeter-3.3/bin/JMeterPluginsCMD.sh --generate-csv /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/jmeter-result/20180527223140_ux2.3_attachmentView_1000.csv --input-jtl /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result/jmeter-result/20180527223140_ux2.3_attachmentView_1000.jtl --plugin-type AggregateReport
+ERROR StatusLogger No log4j2 configuration file found. Using default configuration: logging only errors to the console. Set system property 'org.apache.logging.log4j.simplelog.StatusLogger.level' to TRACE to show Log4j2 internal initialization logging.
+Task: Generating Aggregate report --> done
+Task: parse jmeter report --> Start
+Task: Generating html report --> Start
+Task: Generating html report --> done
+Task: parse jmeter report --> End
+Finished: All tasks done! Sun May 27 22:54:20 EDT 2018
