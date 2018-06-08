@@ -81,7 +81,7 @@
           </elementProp>
           <elementProp name="timeout" elementType="Argument">
             <stringProp name="Argument.name">timeout</stringProp>
-            <stringProp name="Argument.value">61000</stringProp>
+            <stringProp name="Argument.value">6100000</stringProp>
             <stringProp name="Argument.desc">request timeout</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
