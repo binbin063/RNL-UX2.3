@@ -38,7 +38,9 @@ parse_jmeter_report()
     echo "<TD bgcolor=$title_color><B>Label</TD>" >> $htmlFile
     echo "<TD bgcolor=$title_color><B>#Samples</TD>" >> $htmlFile
     echo "<TD bgcolor=$title_color><B>Average</TD>" >> $htmlFile
-    ##echo "<TD bgcolor=$title_color><B>90% Line</TD>" >> $htmlFile
+    echo "<TD bgcolor=$title_color><B>90% Line</TD>" >> $htmlFile
+    echo "<TD bgcolor=$title_color><B>95% Line</TD>" >> $htmlFile
+    echo "<TD bgcolor=$title_color><B>99% Line</TD>" >> $htmlFile
     echo "<TD bgcolor=$title_color><B>Min</TD>" >> $htmlFile
     echo "<TD bgcolor=$title_color><B>Max</TD>" >> $htmlFile
     echo "<TD bgcolor=$title_color><B>Error</TD>" >> $htmlFile
@@ -56,28 +58,32 @@ parse_jmeter_report()
 	label=`echo $line | cut -f 1 -d ','`
 	samples=`echo $line | cut -f 2 -d ','`
 	avg=`echo $line | cut -f 3 -d ','`
-##	line90=`echo $line | cut -f 5 -d ','`
+	line90=`echo $line | cut -f 5 -d ','`
+    line95=`echo $line | cut -f 6 -d ','`
+    line99=`echo $line | cut -f 7 -d ','`
 	min=`echo $line | cut -f 8 -d ','`
 	max=`echo $line | cut -f 9 -d ','`
 	error=`echo $line | cut -f 10 -d ','`
 	throughput=`echo $line | cut -f 11 -d ','`
 	throughput=$(nice_number $throughput)
 	echo "<TR bgcolor=$COLOUR>"  >> $htmlFile
-	echo "<TD>$label</TD><TD>$samples</TD><TD>$avg</TD><TD>$min</TD><TD>$max</TD><TD>$error</TD><TD>$throughput</TD></TR>" >> $htmlFile
+	echo "<TD>$label</TD><TD>$samples</TD><TD>$avg</TD><TD>$line90</TD><TD>$line95</TD><TD>$line99</TD><TD>$min</TD><TD>$max</TD><TD>$error</TD><TD>$throughput</TD></TR>" >> $htmlFile
     done < $tmpFile
 
     ## Add last line -- the total Line
     line=$(tail -1 $csvFile)
     samples=`echo $line | cut -f 2 -d ','`
     avg=`echo $line | cut -f 3 -d ','`
-##    line90=`echo $line | cut -f 5 -d ','`
+    line90=`echo $line | cut -f 5 -d ','`
+    line95=`echo $line | cut -f 6 -d ','`
+    line99=`echo $line | cut -f 7 -d ','`
     min=`echo $line | cut -f 8 -d ','`
     max=`echo $line | cut -f 9 -d ','`
     error=`echo $line | cut -f 10 -d ','`
     throughput=`echo $line | cut -f 11 -d ','`
     throughput=$(nice_number $throughput)
     echo "<TR bgcolor=#bcfbf7>"  >> $htmlFile
-    echo "<TD><B>TOTAL</TD><TD><B>$samples</TD><TD><B>$avg</TD><TD><B>$min</TD><TD><B>$max</TD><TD><B>$error</TD><TD><B>$throughput</TD></TR>" >> $htmlFile
+    echo "<TD><B>TOTAL</TD><TD><B>$samples</TD><TD><B>$avg</TD><TD>$line90</TD><TD>$line95</TD><TD>$line99</TD><TD><B>$min</TD><TD><B>$max</TD><TD><B>$error</TD><TD><B>$throughput</TD></TR>" >> $htmlFile
 
     echo "</TABLE>" >> $htmlFile
     echo "</BODY></HTML>" >> $htmlFile

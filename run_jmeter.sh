@@ -3,7 +3,7 @@
 
 #usage: nohup sh run_jmeter.sh --jmxFile ./jmeter-ux2.3/ux2.3_mailcategory_v1.0.jmx --output ux2.3_mailcategory_1000 --propertyFile ./jmeter-ux2.3/test.properties --resdir /root/ux2.3-result/ux2.3-mailcategory-result/ux2.3-mailcategory-1000-result > test.log 2>&1 &
 
-#usage: nohup sh run_jmeter.sh --jmxFile ./jmeter-ux2.3/ux2.3_attachmentView_1.0.jmx --output ux2.3_attachmentView_1000 --propertyFile ./jmeter-ux2.3/test.properties --resdir /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-1000-result > test.log 2>&1 &
+#usage: nohup sh run_jmeter.sh --jmxFile ./jmeter-ux2.3/ux2.3_attachmentView_1.0.jmx --output ux2.3_attachmentView_2500 --propertyFile ./jmeter-ux2.3/test.properties --resdir /root/ux2.3-result/ux2.3-attachmentView-result/ux2.3-attachmentView-2500-result > test.log 2>&1 &
 
 #usage: nohup sh run_jmeter.sh --jmxFile ./jmeter-ux2.3/ux2.3_sortbysubject_v1.0.jmx --output ux2.3_sortbysubject_3000 --propertyFile ./jmeter-ux2.3/test.properties --resdir /root/ux2.3-result/ux2.3-sortbysubject-result/ux2.3-sortbysubject-3000-result > test.log 2>&1 &
 ##set -x
