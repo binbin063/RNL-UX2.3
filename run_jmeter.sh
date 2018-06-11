@@ -158,7 +158,8 @@ stop_monitoring()
 {
     echo "Task: monitoring --> Stop"
     ## stop monitoring
-	echo "./monitor/monitor_yz stop $resultDirMonitor"
+    # /root/ux2.3-test-data/monitor/monitor_yz stop /root/ux2.3-result/ux2.3-mailpabcaltask-result/ux2.3-mailpabcaltask-3000-result/monitor-result
+	echo "${rootDir}/monitor/monitor_yz stop $resultDirMonitor"
     sh ${rootDir}/monitor/monitor_yz stop $resultDirMonitor
 }
 
@@ -185,6 +186,7 @@ parse_jmeter_report()
         exit 4
     fi
     echo "Task: parse jmeter report --> Start"
+    # sh /root/ux2.3-test-data-bak/jmeter-ux2.3/parse_jmeter_report.sh 20180308053555_ux2.3_mailpabcaltask_3000.csv 20180308053555_ux2.3_mailpabcaltask_3000.html tmp4980
     sh ${rootDir}/jmeter-ux2.3/parse_jmeter_report.sh $csvFile $htmlFile $tmpFile
     echo "Task: parse jmeter report --> End"
 }
