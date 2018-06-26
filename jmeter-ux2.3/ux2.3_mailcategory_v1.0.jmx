@@ -2768,7 +2768,7 @@ vars.put(&quot;mailBody&quot;, &quot;This is a mail from &quot; + user + &quot; 
             </hashTree>
           </hashTree>
         </hashTree>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${__Random(1,100,randomSearch)} &lt; 5" enabled="true">
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${__Random(1,100,randomSearch)} &lt; 5" enabled="false">
           <stringProp name="IfController.condition">${__jexl3(${__Random(1,100,randomSearch)} &lt; 5)}</stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
           <boolProp name="IfController.useExpression">true</boolProp>
